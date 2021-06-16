@@ -9,6 +9,6 @@
        update_cache: yes
     - name: clone remote repo
       git:
-        repo: url
+        repo: https://github.com/rohitgawade/ansible.git
         dest: /home/ubuntu
 ...
