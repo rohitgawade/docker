@@ -1,0 +1,14 @@
+---
+- name: install git and clone remote repo
+  hosts: all
+  tasks:
+    - name: install git
+      apt:
+       name: git
+       state: present
+       update_cache: yes
+    - name: clone remote repo
+      git:
+        repo: url
+        dest: /home/ubuntu
+...
