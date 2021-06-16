@@ -1,0 +1,39 @@
+---
+- name: setup jenkins enviorment
+  hosts: jenkins-server
+  tasks:
+    - name: install java,git maven
+      apt:
+        name: "{{item}}"
+        state: present
+      with_items:
+        - openjdk-8-jdk
+        - git
+        - maven
+    - name: download jenkins
+      get_url:
+        url: http://jenkis.war
+        dest: /tmp
+    - name: startup jenkins
+      shell: java-jar /tmp/jenkins.war
+- name: set-up tomcat on qa and prod server
+  hosts: server
+  tasks:
+    - name: install tomcat8 and tomcat8-admin
+      apt:
+        name: "{{item}}"
+        state: present
+      with_items:
+        - tomcat8
+        - tomcat8-admin
+    - name: copy tomcat_users.xml file
+      copy:
+        src: /home/ubuntu/tomcat_users.xml
+        dest: /etc/tomcat8
+    - name: restart tomcat8
+      service:
+        name: tomcat8
+        state: restarted
+...
+-
+

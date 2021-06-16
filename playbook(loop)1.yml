@@ -1,0 +1,16 @@
+---
+- name: installing/uninstalling package
+  hosts: all
+  tasks:
+    - name: install/uninstall/upgrade packages
+      apt:
+        name: "{{item.a}}"
+        state: "{{item.b}}"
+        update_cache: "{{item.c}}"
+      with_items:
+        - {a: tree,b: present,c: no}
+        - {a: apache2,b: present,c: no}
+        - {a: git,b: present,c: no}
+...
+
+

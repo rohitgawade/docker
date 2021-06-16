@@ -1,0 +1,23 @@
+---
+- name: implimenting tags
+  hosts:
+  tasks:
+    - name: install tree
+      apt:
+        name: tree
+        state: present
+      tags: tree_installation
+    - name: create user
+      user:
+        name: ravi
+        password: ravi
+      tags: user_creeation
+    - name: copy /etc/passwd file
+      copy:
+        src: /etc/passwd
+        dest: /tmp
+...
+# command----
+# to exicute only the tagged module frome above playbook---ansible-playbook playbook.yml --tags=tagged -b
+# to exicute only the untagged module frome above playbook---ansible-playbook playbook.yml --tags=untagged -b
+# to exicute module with specific tags--ansible-playbook playbook.yml --tags=user_creation -b

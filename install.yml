@@ -1,0 +1,6 @@
+---
+- name: install tomcat
+  apt:
+    name: tomcat8
+    state: present
+...

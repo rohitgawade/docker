@@ -1,0 +1,33 @@
+---
+- name: configure apache2
+  hosts: all
+  tasks:
+  - name: install apache2
+    apt:
+      name: apache2
+      state: present
+  - name: edit index.htm file
+    copy:
+      content: "wellcome to intelliq \n"
+      dest: /var/www/html/index.html
+  - name: restart apache2
+    service:
+      name: apache2
+      state: restarted
+  - name: check url response of server1
+      uri:
+        url: http://pv ip of node1:9090
+        status_code: 200
+  - name: check url response of server2
+      uri:
+        url: http://pv ip of node2:9090
+        status_code: 200
+...
+
+
+
+
+
+
+
+

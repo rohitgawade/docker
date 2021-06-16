@@ -9,7 +9,7 @@
    - name: copy /etc/passwd file into it
      copy:
        src: /etc/passwd
-       dest: /temp/dir1
+       dest: /tmp/dir1
 ...
 
 

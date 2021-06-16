@@ -1,0 +1,20 @@
+---
+- name: installing package
+  hosts: all
+  tasks:
+  - name: install s/w
+    apt:
+     name: "{{items}}"
+      state: present
+      update_cache: no
+    with_items:
+      - tree
+      - apache2
+      - tomcat8
+      - git
+...
+
+
+
+
+

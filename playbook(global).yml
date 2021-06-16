@@ -1,0 +1,11 @@
+---
+- name: install,uninstall and update s/w packages
+  hosts:
+  tasks:
+  - name: install,uninstall s/w package
+    apt:
+      name: "{{a}}"
+      state: "{{b}}"
+      update_cache: "{{c}}"
+...
+# command---ansible-plybook playbook(global).yml --extra-vars "a=git b=present c=yes" -b

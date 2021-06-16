@@ -1,0 +1,7 @@
+---
+- name: exicuting child playbook
+  hosts: all
+  tasks:
+    - name: call child playbook
+      include: ansible(child).yml
+...

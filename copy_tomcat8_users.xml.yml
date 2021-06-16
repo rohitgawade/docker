@@ -1,0 +1,6 @@
+---
+- name: copy tomcat_useers.xml
+  copy:
+    src: /home/ubuntu/tomcat_users.xml
+    dest: /home/ubuntu
+...

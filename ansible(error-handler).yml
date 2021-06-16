@@ -1,0 +1,24 @@
+---
+- name: error handling
+  hosts: all
+  tasks:
+    - block:
+        - name: install tomcat7
+          apt:
+            name: tomcat7
+            state: present
+          rescue:
+          - name: tomcat8
+            apt:
+              name: tomcat8
+              state: present
+    always:
+      - name: check the url response
+        uri:
+          url: "{{item}}"
+          status_code: 200
+        with_items:
+          - http://pv-ip:8080
+          - http://pv-ip:8080
+...
+

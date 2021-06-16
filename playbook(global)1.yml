@@ -1,0 +1,19 @@
+---
+- name: creating user and download file into users home directory
+  hosts: all
+  tasks:
+  - name: create user
+    user:
+      name: "{{a}}"
+      password: "{{b}}"
+      home: "{{c}}"
+  - name: download file
+    get_url:
+      url: "{{d}}"
+      dest: "{{e}}"
+...
+#command---ansible-playbook playbook(global).yml --extra-vars "a=ray b=ray c=/home/ray d=url e=/home/ray" -b
+
+
+
+
